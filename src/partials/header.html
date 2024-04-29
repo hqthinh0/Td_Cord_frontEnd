@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+	@@include('parts/header_head.html', {"title": '@@title', "url": '@@url'})
+	<body>
+		<div id="l-document" data-scroll-container>
+			<header id="l-header" class="l-header" >
+				<div class="l-header__wrapper">
+					<h1 id="sitelogo">
+						<a href="@@webRoot/"
+							><img src="@@webRoot/assets/images/logo.png" alt="★★★" class="fluid-image"
+						/></a>
+					</h1>
+					<a class="nav-global-menu">
+						<span class="b1" aria-hidden="true"></span>
+						<span class="b2" aria-hidden="true"></span>
+						<span class="b3" aria-hidden="true"></span>
+					</a>
+					<nav class="nav-global-wrap">
+						<ul class="nav-global">
+							<li class="@@if (context.page === 'home') {active}">
+								<a href="@@webRoot/" class="nav-item">Trang Chủ</a>
+							</li>
+							<li class="@@if (context.page === 'company') {active}">
+								<a href="@@webRoot/company/" class="nav-item">giới thiệu</a>
+							</li>
+							<li class="@@if (context.page === 'service') {active}">
+								<a href="@@webRoot/service/" class="nav-item">dịch vụ</a>
+							</li>
+							<!-- <li class="@@if (context.page === 'accessibility') {active}">
+								<a href="@@webRoot/accessibility/" class="nav-item">đối tác</a>
+							</li> -->
+							<li class="@@if (context.page === 'contact') {active}">
+								<a href="@@webRoot/contact/" class="nav-item">liên hệ</a>
+							</li>
+						
+						</ul>
+
+					</nav>
+				</div>
+			</header>
+			<!-- <div class="contact">
+				<div class="contact__fixed">
+					<a href="@@webRoot/estimate/" class="contact__btn btn"
+						><img src="@@webRoot/assets/images/icn-calculator.png"
+					/></a>
+					<a href="@@webRoot/contact/" class="contact__btn btn"
+						><img src="@@webRoot/assets/images/email.png"
+					/></a>
+				</div>
+			</div> -->
