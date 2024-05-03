@@ -1153,10 +1153,10 @@ textarea {
 	display: inline-block;
 }
 /* for RWD */
-// .fluid-image {
-// 	max-width: 100%;
-// 	height: auto;
-// }
+.fluid-image {
+	max-width: 100%;
+	height: auto;
+}
 
 /* width */
 .w1per {
@@ -2017,6 +2017,18 @@ textarea {
 	text-align: left;
 	align-items: flex-start;
 	justify-content: center;
+	&--small{
+		font-size: 2rem;
+		padding: 0;
+		margin-top: 1rem;
+		&::after{
+			content: '';
+			border-bottom: 1px solid var(--color-text);
+			width: 80%;
+			margin-top: 1rem;
+			display: block;
+		}
+	}
 	&--center {
 			text-align: center;
 			align-items: center;
@@ -2560,12 +2572,27 @@ textarea {
 
 @import 'slider';
 
-// -------------------------
+// -----------Start EDIT --------------
+.txt-capitalize{
+	text-transform: capitalize;
+}
+.txt-uppercase{
+	text-transform: uppercase;
+}
 .box{
 	&-grid{
 	 	& > .grid-col--3{
-			padding-left: 2.2rem;
-				padding-right: 2.2rem;
+			@media screen and (min-width:1200px) {
+					padding-left: 2.2rem;
+						padding-right: 2.2rem;
+			}
+			
+		}
+		& > .grid-col--4{
+			@media screen and (min-width:1200px) {
+					padding-left: 2.2rem;
+					padding-right: 2.2rem;
+				}
 		}
 	}
 }
@@ -2584,5 +2611,134 @@ textarea {
 .service{
 	.box-grid{
 			justify-content: center;
+	}
+}
+
+.experience{
+		.grid-col--3 {
+				@media screen and (max-width: 1200px) {
+					width: 25%;
+				}
+			@media only screen and (max-width: 767px) {
+				width: 50%;
+			}
+		}
+	.box-category{
+		margin-top: 4rem;
+	}
+	.box-grid{
+		text-align: center;
+		justify-content: center;
+	}
+	&__item{
+			@media screen and (max-width: 1200px) {
+				font-size: 3.2rem
+			}
+			@media screen and (max-width: 767px) {
+				margin-top: 3rem;
+				font-size: 2.4rem;
+			}
+	
+			font-size: 4rem;
+			line-height: 1;
+
+		&--img{
+			
+			width: 10rem;
+			text-align: center;
+			margin: 0 auto;
+			@media screen and (max-width: 1200px) {
+				width: 9rem;
+			}
+			@media screen and (max-width: 767px) {
+				width: 8rem;	
+			}
+			
+		}
+		&--count{
+			
+			font-family: 'Saira Stencil One', cursive;
+			margin-top: 2rem;
+			color: var(--color_red);
+			font-weight: bold;
+		}
+		&--name{
+			margin-top: 1rem;
+			color: var(--color-second);
+		}
+	}
+
+}
+
+.construction{
+	.grid-col--3 {
+			padding-left: 1rem;
+			padding-right: 1rem;
+
+			@media screen and (max-width:1100px) {
+				width: 33.333%;
+			}
+			@media screen and (max-width:767px) {
+				width: 50%;
+			}
+			@media screen and (max-width:550px) {
+				width: 100%;
+			}
+		}
+	&__info{
+		margin-top: 1.5rem;
+		& .txt-info {
+			padding: 0 3rem;
+		}
+	}
+}
+
+.icon{
+	position: relative;
+	&::before {
+		content: "";
+		background-size: contain;
+		position: absolute;
+		display: block;
+		height: 4.8rem;
+		width: 4.8rem;
+		left: 0;
+		top: 0.4rem;
+	}
+}
+.icon_user{
+	&::before{
+		background: url('../images/user.png') no-repeat;
+	}
+}
+.icon_area {
+	&::before {
+		background: url('../images/area.png') no-repeat;
+	}
+}
+.icon_map {
+	&::before {
+		background: url('../images/map.png') no-repeat;
+	}
+}
+.icon_building {
+	&::before {
+		background: url('../images/building.png') no-repeat;
+	}
+}
+.icon-phone{
+	&::before {
+		@media screen and (max-width:959px) {
+			display: none;
+		}
+		content: "";
+		background-size: contain;
+		position: absolute;
+		background: url('../images/telephone.png') no-repeat;
+		display: block;
+		height: 4.8rem;
+		width: 4.8rem;
+		left: 0;
+		top: -0.4rem;
 	}
 }

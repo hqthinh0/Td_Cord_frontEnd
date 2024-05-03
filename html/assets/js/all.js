@@ -1,3 +1,10 @@
+$(window).scroll(function () {
+    if ($(this).scrollTop() > 100) {
+        $('#l-header').addClass('sticky');
+    } else {
+        $('#l-header').removeClass('newCstickylass');
+    }
+});
 /* -----------------------------------------------
 Table of Contents (common js)
 --------------------------------------------------
@@ -3432,56 +3439,12 @@ $('.frm-base-textarea')
 	};
 });
 
-// var $status = $('.pagingInfo');
-// var $slickElement = $('.main-slider-nav');
-// var $slickElementFor = $('.main-slider-for');
-
-var $slickElement = $('.slider');
-
-// $slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-// 	//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
-// 	var i = (currentSlide ? currentSlide : 0) + 1;
-// 	$status.text(i + '/' + slick.slideCount);
-// 	$('.bg-images').each(function () {
-// 		var imageUrl = $(this).data('bg');
-// 		$(this).css('background-image', 'url("' + imageUrl + '")');
-// 	});
-// });
-
-$slickElement.slick({
-	autoplay: true,
-	autoplaySpeed: 3000,
-	dots: true,
-	arrows: true,
-	// asNavFor: $slickElementFor,
-	speed: 1000,
-	fade: true,
-	cssEase: 'linear',
-	pauseOnHover: false,
-	pauseOnFocus: false,
+$(window).scroll(function () {
+	if ($(this).scrollTop() > 50) {
+		$('#l-header').addClass('sticky');
+	} else {
+		$('#l-header').removeClass('sticky');
+	}
 });
 
-const scroller = new LocomotiveScroll({
-	el: document.querySelector('[data-scroll-container]'),
-	smooth: true,
-});
-
-let x = document.querySelectorAll(".count");
-
-let arr = Array.from(x);
-
-arr.map((item) => {
-	let count = item.innerHTML;
-	item.innerHTML = "0";
-	let countNumber = 0;
-	setInterval((counterUp) => {
-		if (countNumber <= count) {
-			item.innerHTML = countNumber;
-			countNumber++;
-		} else {
-			clearInterval;
-		}
-	}, item.dataset.speed / count);
-});
-
-
+// https://jsfiddle.net/MeP3V/

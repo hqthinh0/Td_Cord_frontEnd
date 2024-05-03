@@ -6,18 +6,18 @@
 	width: 5rem;
 	height: 5rem;
 	right: 0;
-	top: 1rem;
+	top: 6rem;
 	display: none;
 	@media only screen and (max-width: 959px) {
 		display: block;
 	}
 	& span {
 		display: block;
-		width: 2.4rem;
-		height: 0.1rem;
+		width: 3rem;
+		height: 0.4rem;
 		position: absolute;
 		left: 1.1rem;
-		background: var(--color_red);
+		background: var(--color-primary);
 		transition: all 0.5s;
 		-webkit-transition: all 0.5s;
 		&.b1 {
@@ -32,8 +32,9 @@
 	}
 	&.is-active {
 		position: fixed;
+		top: 2rem;
 		& span {
-			background: var(--color_red);
+			background: var(--color-primary);
 			&.b1 {
 				transform: translateY(0.9rem) rotate(315deg);
 				-webkit-transform: translateY(0.9rem) rotate(315deg);
@@ -72,7 +73,7 @@
 			position: relative;
 			font-size: 1.6rem;
 			font-weight: 700;
-			color: #000;
+			color: var(--color-second);
 				text-transform: capitalize;
 			@media screen and (max-width: 1400px) {
 				font-size: 1.4rem;
@@ -87,8 +88,8 @@
 				position: absolute;
 				width: 0;
 				top: -7px;
-				border-left: 0.2rem solid var(--color_red);
-				border-top: 0.2rem solid var(--color_red);
+				border-left: 0.2rem solid var(--color-primary);
+				border-top: 0.2rem solid var(--color-primary);
 				visibility: hidden;
 				transition: all 0.3s ease;
 				transform: translateX(-50%);
@@ -104,8 +105,8 @@
 				position: absolute;
 				bottom: -40%;
 				width: 0;
-				border-right: 0.2rem solid var(--color_red);
-				border-bottom: 0.2rem solid var(--color_red);
+				border-right: 0.2rem solid var(--color-primary);
+				border-bottom: 0.2rem solid var(--color-primary);
 				visibility: hidden;
 				transition: all 0.3s ease;
 				transform: translateX(-50%);
@@ -133,7 +134,7 @@
 			overflow-y: auto;
 			transition: all 0.3s ease-in-out;
 			opacity: 0.9;
-			background-color: var(--bg-color-grey);
+			background-color: var(--color-second);
 			-webkit-transition: all 0.3s ease-in-out;
 			z-index: 99;
 		}
