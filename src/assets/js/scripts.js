@@ -3441,3 +3441,44 @@ $(window).scroll(function () {
 });
 
 // https://jsfiddle.net/MeP3V/
+
+
+$(window).scroll(function () {
+	if ($(this).scrollTop() > 100) {
+		$('#l-header').addClass('sticky');
+	} else {
+		$('#l-header').removeClass('newCstickylass');
+	}
+});
+
+$('.slider').slick({
+	infinite: true,
+	slidesToShow: 1,
+	autoplay: true,
+	slidesToScroll: 1,
+	dots: true,
+	autoplaySpeed: 1000,
+	speed: 900,
+	fade: true,
+	cssEase: 'linear',
+});
+
+$('.feedback').slick({
+	infinite: true,
+	slidesToShow: 1,
+	autoplay: true,
+	slidesToScroll: 1,
+	dots: true,
+	autoplaySpeed: 1000,
+	speed: 900,
+});
+
+$('.business').slick({
+	infinite: true,
+	slidesToShow: 4,
+	autoplay: true,
+	slidesToScroll: 4,
+	autoplaySpeed: 1000,
+	speed: 900,
+});
+
