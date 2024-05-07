@@ -3469,8 +3469,8 @@ $('.feedback').slick({
 	autoplay: true,
 	slidesToScroll: 1,
 	dots: true,
-	autoplaySpeed: 1000,
-	speed: 900,
+	autoplaySpeed: 2000,
+	speed: 1000,
 });
 
 $('.business').slick({
@@ -3478,7 +3478,70 @@ $('.business').slick({
 	slidesToShow: 4,
 	autoplay: true,
 	slidesToScroll: 4,
-	autoplaySpeed: 1000,
-	speed: 900,
+	autoplaySpeed: 3000,
+	speed: 1500,
+	responsive: [
+		{
+			breakpoint: 679,
+			settings: {
+				slidesToScroll: 2,
+				slidesToShow: 2,
+			}
+		}
+	]
 });
 
+$(window).on("load", function () {
+	$(window).scroll(function () {
+		var windowBottom = $(this).scrollTop() + $(this).innerHeight();
+		var mobileOffset = $(window).width() < 768 ? 100 : 0; // Set offset to 50px on mobile, 0px otherwise
+		$(".fadeInUp").each(function () {
+			/* Check the location of each desired element */
+			var objectBottom = $(this).offset().top + $(this).outerHeight();
+
+			/* If the element is within bounds of the window with the offset, add class */
+			if (objectBottom < windowBottom - mobileOffset) { //object comes into view (scrolling down)
+				$(this).addClass("visible");
+			} else { //object goes out of view (scrolling up)
+				$(this).removeClass("visible");
+			}
+		});
+	}).scroll(); //invoke scroll-handler on page-load
+});
+
+
+var a = 0;
+$(window).scroll(function () {
+
+	var oTop = $('#counter').offset().top - window.innerHeight;
+	if (a == 0 && $(window).scrollTop() > (oTop + 50)) {
+		$('.counter-value').each(function () {
+			var $this = $(this),
+				countTo = $this.attr('data-target');
+			// Store the symbol in a variable
+			var symbol = $this.data('symbol');
+			// Update the text of the counter value with symbol
+			$this.text('0' + symbol); // Start from 0 with symbol
+			$({
+				countNum: 0 // Start from 0
+			}).animate({
+				countNum: countTo
+			},
+
+				{
+
+					duration: 5000,
+					easing: 'swing',
+					step: function () {
+						$this.text(Math.floor(this.countNum) + symbol); // Update the text with current count and symbol
+					},
+					complete: function () {
+						$this.text(Math.floor(this.countNum) + symbol); // Ensure final value is displayed with symbol
+					}
+
+				});
+		});
+		a = 1;
+	}
+
+});

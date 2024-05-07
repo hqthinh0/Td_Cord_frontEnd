@@ -2746,10 +2746,11 @@ section + section{
 		position: absolute;
 		background: url('../images/telephone.png') no-repeat;
 		display: block;
-		height: 4.8rem;
-		width: 4.8rem;
+		height: 2.8rem;
+		background-size: cover;
+		width: 2.8rem;
 		left: 0;
-		top: -0.4rem;
+		top: -.2rem;
 	}
 }
 
@@ -2787,6 +2788,12 @@ section + section{
 			box-sizing: border-box;
 		}
 	}
+		& .slick-arrow {
+			@media screen and (max-width:769px) {
+				display: none !important;
+			}
+			
+		}
 }
 
 
@@ -2805,5 +2812,37 @@ section + section{
 			box-sizing: border-box;
 		}
 	}
+	& .slick-arrow{
+		display: none !important;
+	}
 	
+}
+
+.lst-media{
+	& li {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		box-sizing: border-box;
+	 &	img{
+			width: 4rem;
+		}
+	}
+
+	& + p {
+		margin-top: 2rem;
+	}
+}
+.partner{
+	margin-top: 10rem;
+}
+
+
+.fadeInUp {
+	opacity: 0;
+	transform: translateY(6rem);
+	transition: opacity 0.7s ease, transform 0.7s ease;
+	&.visible{
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
