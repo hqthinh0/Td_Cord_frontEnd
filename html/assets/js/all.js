@@ -3406,7 +3406,6 @@ $('.frm-base-textarea')
 
 	Slick.prototype.visibility = function () {
 		var _ = this;
-
 		if (_.options.autoplay) {
 			if (document[_.hidden]) {
 				_.interrupted = true;
@@ -3479,6 +3478,7 @@ $('.business').slick({
 	autoplay: true,
 	slidesToScroll: 4,
 	autoplaySpeed: 3000,
+	loop: true,
 	speed: 1500,
 	responsive: [
 		{
@@ -3528,7 +3528,7 @@ if ($('.js-animation').get(0)) {
 $(window).on("load", function () {
 	$(window).scroll(function () {
 		var windowBottom = $(this).scrollTop() + $(this).innerHeight();
-		var mobileOffset = $(window).width() < 768 ? 100 : 50; // Set offset to 50px on mobile, 0px otherwise
+		var mobileOffset = $(window).width() < 768 ? 150 : 50; // Set offset to 50px on mobile, 0px otherwise
 		$(".fadeInUp").each(function () {
 			/* Check the location of each desired element */
 			var objectBottom = $(this).offset().top + $(this).outerHeight();
@@ -3545,35 +3545,35 @@ $(window).on("load", function () {
 
 
 var a = 0;
-$(window).scroll(function () {
+if (window.location.pathname === "/") { // Chỉ chạy trên trang index
+	$(window).scroll(function () {
+		var oTop = $('#counter').offset().top - window.innerHeight;
+		if (a == 0 && $(window).scrollTop() > (oTop - 150)) {
+			$('.counter-value').each(function () {
+				var $this = $(this),
+					countTo = $this.attr('data-target');
+				// Store the symbol in a variable
+				var symbol = $this.data('symbol');
+				// Update the text of the counter value with symbol
+				$this.text('0' + symbol); // Start from 0 with symbol
+				$({
+					countNum: 0 // Start from 0
+				}).animate({
+					countNum: countTo
+				},
+					{
+						duration: 8000,
+						easing: 'swing',
+						step: function () {
+							$this.text(Math.floor(this.countNum) + symbol); // Update the text with current count and symbol
+						},
+						complete: function () {
+							$this.text(Math.floor(this.countNum) + symbol); // Ensure final value is displayed with symbol
+						}
 
-	var oTop = $('#counter').offset().top - window.innerHeight;
-	if (a == 0 && $(window).scrollTop() > (oTop + 150)) {
-		$('.counter-value').each(function () {
-			var $this = $(this),
-				countTo = $this.attr('data-target');
-			// Store the symbol in a variable
-			var symbol = $this.data('symbol');
-			// Update the text of the counter value with symbol
-			$this.text('0' + symbol); // Start from 0 with symbol
-			$({
-				countNum: 0 // Start from 0
-			}).animate({
-				countNum: countTo
-			},
-				{
-					duration: 8000,
-					easing: 'swing',
-					step: function () {
-						$this.text(Math.floor(this.countNum) + symbol); // Update the text with current count and symbol
-					},
-					complete: function () {
-						$this.text(Math.floor(this.countNum) + symbol); // Ensure final value is displayed with symbol
-					}
-
-				});
-		});
-		a = 1;
-	}
-
-});
+					});
+			});
+			a = 1;
+		}
+	});
+}
