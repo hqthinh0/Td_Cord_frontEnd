@@ -3491,10 +3491,44 @@ $('.business').slick({
 	]
 });
 
+if ($('.js-animation').get(0)) {
+	function jsScrollAnimation() {
+		var $winHeight = $(window).height();
+		$('.js-animation').each(function () {
+			var $this = $(this);
+			var $thisOffset = $this.offset().top;
+			if ($winHeight > $thisOffset) {
+				$this.addClass('is-animated');
+				var value = $this.attr("data-delay");
+				$this.css('transition-delay', value + 's');
+			} else {
+				$this.removeClass('is-animated');
+			}
+		});
+		$(window).scroll(function () {
+			$('.js-animation').each(function () {
+				var $this = $(this);
+				var $thisOffset = $this.offset().top;
+				var $topOffset = $(window).scrollTop() + ($winHeight * 0.8);
+				if ($topOffset > $thisOffset) {
+					$this.addClass('is-animated');
+					var value = $this.attr("data-delay");
+					$this.css('transition-delay', value + 's');
+				}
+				else {
+					$this.removeClass('is-animated');
+				}
+			});
+		});
+	}
+	jsScrollAnimation();
+}
+
+
 $(window).on("load", function () {
 	$(window).scroll(function () {
 		var windowBottom = $(this).scrollTop() + $(this).innerHeight();
-		var mobileOffset = $(window).width() < 768 ? 100 : 0; // Set offset to 50px on mobile, 0px otherwise
+		var mobileOffset = $(window).width() < 768 ? 100 : 50; // Set offset to 50px on mobile, 0px otherwise
 		$(".fadeInUp").each(function () {
 			/* Check the location of each desired element */
 			var objectBottom = $(this).offset().top + $(this).outerHeight();
@@ -3514,7 +3548,7 @@ var a = 0;
 $(window).scroll(function () {
 
 	var oTop = $('#counter').offset().top - window.innerHeight;
-	if (a == 0 && $(window).scrollTop() > (oTop + 50)) {
+	if (a == 0 && $(window).scrollTop() > (oTop + 150)) {
 		$('.counter-value').each(function () {
 			var $this = $(this),
 				countTo = $this.attr('data-target');
@@ -3527,10 +3561,8 @@ $(window).scroll(function () {
 			}).animate({
 				countNum: countTo
 			},
-
 				{
-
-					duration: 5000,
+					duration: 8000,
 					easing: 'swing',
 					step: function () {
 						$this.text(Math.floor(this.countNum) + symbol); // Update the text with current count and symbol

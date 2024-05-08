@@ -2197,13 +2197,16 @@ textarea {
 // list
 
 .lst-list{
+	margin-top: 3rem;
+	@media screen and (max-width:769px) {
+		margin-top: 1rem;
+	}
+
 	& li{
 		font-size: 1.6rem;
 		padding-left: 2.3rem;
 		color: var(--color-text);
 		position: relative;
-			
-
 		& span{
 			font-weight: 600;
 		}
@@ -2215,7 +2218,6 @@ textarea {
 			top: -6px;
 		}
 	}
-	
 }
 
 
@@ -2463,6 +2465,9 @@ textarea {
 
 /*>>> 2-4-13. Error    [err-***]*/
 
+
+/*>>> 2-4-14. Animate*/
+@import 'animate';
 /* -----------------------------------------------
 *> [3. Layout]
 -------------------------------------------------- */
@@ -2588,6 +2593,11 @@ textarea {
 	text-transform: uppercase;
 }
 .box{
+	&-image{ 
+		& img{
+			width: 100%;
+		}
+	}
 	&-grid{
 	 	& > .grid-col--3{
 			@media screen and (min-width:1200px) {
@@ -2607,32 +2617,102 @@ textarea {
 section + section{
 	margin-top: 5rem;
 }
-.box-category{
-	margin-top: 2rem;
-	.box-image{
-		& img{
-			width: 100%;
+
+.category{
+	margin-top: 3rem;
+
+	.box-category{
+		&__href{
+			&:hover{
+			  &	span{
+				transition: transform 0.7s, filter 0.7s ease-in-out;
+				 color: var(--color-primary);
+			  }
+			}
 		}
-	}
-	&__img + .hdg-lv4{
-		margin-top: 1rem;
-	}
-}
-.service{
-	.box-grid{
-			justify-content: center;
+		&__img{
+			& > img{
+				width: 100%;
+			}
+			height: 100%;
+			box-sizing: border-box;
+			overflow: hidden;
+			transform-origin: 50% 65%;
+			transform: scale(1);
+			transition: transform 0.7s, filter 0.7s ease-in-out;
+
+			&:hover{
+				img{
+					filter: brightness(100%);
+					transform: scale(1.15);
+					transition: transform 0.7s, filter 0.7s ease-in-out;
+				}
+			}
+		}
 	}
 }
 
-.experience{
-		.grid-col--3 {
-				@media screen and (max-width: 1200px) {
-					width: 25%;
+
+.service{
+	margin-top: 3rem;
+	.box-grid{
+			justify-content: center;
+	}
+	.box-category {
+		margin-top: 1rem;
+		&__href {
+			&:hover {
+				& span {
+					transition: transform 0.7s, filter 0.7s ease-in-out;
+					color: var(--color-second);
+					position: relative;
+					&::after{
+						content: '';
+						display: inline-block;
+						position: absolute;
+						bottom: 0;
+						left: 0;
+						text-align: center;
+						-webkit-transition: all 0.3s ease;
+						-webkit-transform: translateX(-50%);
+						visibility: visible;
+						border-bottom: 1px solid var(--color-second);
+					}
 				}
-			@media only screen and (max-width: 767px) {
-				width: 50%;
 			}
 		}
+
+		&__img {
+			height: 100%;
+			box-sizing: border-box;
+			overflow: hidden;
+			transform-origin: 50% 65%;
+			transform: scale(1);
+			transition: transform 0.7s, filter 0.7s ease-in;
+
+			&:hover {
+				img {
+					overflow: hidden;
+					transform-origin: 50% 65%;
+					filter: brightness(100%);
+					transform: scale(1.15);
+					transition: transform 0.7s, filter 0.7s ease-in-out;
+				}
+			}
+		}
+	}
+} 
+
+.experience{
+	margin-top: 3rem;
+	.grid-col--3 {
+			@media screen and (max-width: 1200px) {
+				width: 25%;
+			}
+		@media only screen and (max-width: 769px) {
+			width: 50%;
+		}
+	}
 	.box-category{
 		margin-top: 4rem;
 	}
@@ -2644,7 +2724,7 @@ section + section{
 			@media screen and (max-width: 1200px) {
 				font-size: 3.2rem
 			}
-			@media screen and (max-width: 767px) {
+			@media screen and (max-width: 769px) {
 				margin-top: 3rem;
 				font-size: 2.4rem;
 			}
@@ -2660,7 +2740,7 @@ section + section{
 			@media screen and (max-width: 1200px) {
 				width: 9rem;
 			}
-			@media screen and (max-width: 767px) {
+			@media screen and (max-width: 769px) {
 				width: 8rem;	
 			}
 			
@@ -2755,8 +2835,11 @@ section + section{
 }
 
 
-
+.rate{
+	margin-top: 10rem;
+}
 .feedback {
+	margin-top: 3rem;
 	.box__item {
 		text-align: center;
 	}
@@ -2798,6 +2881,7 @@ section + section{
 
 
 .business{
+	margin-top: 3rem;
 	.box__item{
 		width: 20%;
 		padding-right: 1rem;
