@@ -320,8 +320,32 @@ legend {
 	padding: 0;
 	white-space: normal;
 }
-details {
-	display: block;
+.details {
+	margin-top: 5rem;
+	.hdg-lv2{
+		padding: 0;
+	}
+	.hdg-lv3 {
+		margin-top: 4rem;
+	}
+	.hdg-lv4{
+		margin-top: 3rem;
+	}
+
+	&--content{
+		padding-right: 2rem;
+		padding-left: 2rem;
+		box-sizing: border-box;
+
+		& .images{
+			
+			text-align: center;
+			margin: 1rem auto 0;
+		}
+	 & > p {
+		margin-top: 1.5rem;
+	 }
+	}
 }
 summary {
 	display: list-item;
@@ -2158,9 +2182,9 @@ textarea {
 	}
 	&:hover {
 		color: #fff;
-		&::after {
-			left: 130%;
-		}
+		// &::after {
+		// 	left: 130%;
+		// }
 	}
 	&-second {
 		font-size: 1.6rem;
@@ -2731,6 +2755,23 @@ section + section{
 			}
 		}
 	}
+
+	&__box{
+		margin-top: 6rem;
+		&--content{
+			position: relative;
+			& .hdg-lv4{
+				padding: 1rem 0;
+			}
+
+			& .btn-info{
+				min-width: 22rem;
+				position: absolute;
+				right: 0;
+				background-color: var(--color-second);
+			}
+		}
+	}
 } 
 
 .experience{
@@ -2789,8 +2830,25 @@ section + section{
 	}
 
 }
+.sec-construction{
+	margin-top: 5rem;
+
+	& .hdg-lv2{
+		padding:0;
+	}
+	& .hdg-lv3{
+		margin : 1rem 0;
+	}
+}
 
 .construction{
+	& .box-category{
+		margin-top: 3rem;
+		@media screen and (max-width:769px) {
+			margin-top: 1.5rem;
+		}
+	}
+
 	.grid-col--3 {
 			padding-left: 1rem;
 			padding-right: 1rem;
@@ -2999,7 +3057,7 @@ section + section{
 	@media screen and (max-width:769px) {
 		margin-top: 4rem;
 	}
-	margin-top: 10rem;
+	margin-top: 5rem;
 
 	& + .mission{
 		margin-top: 5rem;
@@ -3030,5 +3088,39 @@ section + section{
 		margin-right: 1rem;
 		margin-left: 1rem;
 		box-sizing: border-box;
+	}
+}
+
+.background{
+	background: var(--color-primary);
+	display: inline-block;
+	padding: 2rem 5rem;
+	text-align: center;
+	box-sizing: border-box;
+	& .color-seconds{
+		color: var(--color-white) !important;
+	}
+
+}
+
+.btn-info{
+	position: relative;
+	display: inline-block;
+	&::after{
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 80%;
+		transform: translate(-50%, -50%) rotate(45deg);
+		width: 10px;
+		height: 10px;
+		border-top: 2px solid var(--color-white);
+		border-right: 2px solid var(--color-white);
+		background-color: unset;
+	}
+	&:hover{
+		&::after{
+			left: 90%;
+		}
 	}
 }
