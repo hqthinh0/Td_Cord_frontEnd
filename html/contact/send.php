@@ -3,27 +3,27 @@ require_once('../assets/mailer/mailer_cfg.php');
 require_once('../assets/mailer/PHPMailerAutoload.php');
 require_once('../assets/mailer/cryptor.php');
 
-// $captcha;
-// if(isset($_POST['g-recaptcha-response'])){
-// 	$captcha = $_POST['g-recaptcha-response'];
-// }
-// if(!$captcha){
-// 	echo '<h2>キャプチャフォームを確認してください。 </h2>';
-// 	exit;
-// }
+$captcha;
+if(isset($_POST['g-recaptcha-response'])){
+	$captcha = $_POST['g-recaptcha-response'];
+}
+if(!$captcha){
+	echo '<h2>Vui lòng kiểm tra mẫu captcha. </h2>';
+	exit;
+}
 
-// $secretKey = "6Ld1MxUpAAAAAMdnoG3X64UHyZWzu3J--JEmXk0P";
-// $url = 'https://www.google.com/recaptcha/api/siteverify?secret' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
-// $response = file_get_contents($url);
-// $responseKeys = json_decode($response, true);
-// if($responseKeys["success"]) {
-// } else {
-// 	echo '<h2>キャプチャフォームを確認してください。 </h2>';
-// 	exit;
-// }
+$secretKey = "6Ld1MxUpAAAAAMdnoG3X64UHyZWzu3J--JEmXk0P";
+$url = 'https://www.google.com/recaptcha/api/siteverify?secret' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
+$response = file_get_contents($url);
+$responseKeys = json_decode($response, true);
+if($responseKeys["success"]) {
+} else {
+	echo '<h2>Vui lòng kiểm tra mẫu captcha. </h2>';
+	exit;
+}
 
 if(!isset($_POST['mailform_token']) || !isset($_POST['mailform_js'])){
-	exit('不正な画面遷移が行われました。');
+	exit('Đã xảy ra chuyển đổi màn hình không hợp lệ.');
 }
 
 
@@ -46,7 +46,7 @@ $content .= "</div>";
 $content_send_admin ="<p style='padding: 20px 15px 0;'>Chúng tôi đã nhận được những yêu cầu sau đây<br>Cảm ơn sự Phản hồi của bạn</p><p style='padding: 0 15px;'>*************************************************</p>".$content;
 
 $content_send_user =
-"<p>※Đây là Email được trả lời tự động. Xin lưu ý rằng chúng tôi sẽ không thể trả lời ngay cả khi nhận được thư trả lời<br><br><a href='#' target='_blank'>Rongdo.net</a> Người phụ trách sẽ liên hệ lại với bạn <br>bạn có thể phải đợi trong giây lát chậm nhất là trong ngày.<br>※xin lưu ý rằng: việc trả lời có thể có những cái chúng tôi không trả lời được hoặc mất một chút thời gian để trả lời.<br><br>Chúng tôi đã nhận được yêu cầu từ bạn</p><p>*************************************************</p>".
+"<p>※Đây là Email được trả lời tự động. Xin lưu ý rằng chúng tôi sẽ không thể trả lời ngay cả khi nhận được thư trả lời<br><br><a href='#' target='_blank'>tdcorp.net</a> Người phụ trách sẽ liên hệ lại với bạn <br>bạn có thể phải đợi trong giây lát chậm nhất là trong ngày.<br>※xin lưu ý rằng: việc trả lời có thể có những cái chúng tôi không trả lời được hoặc mất một chút thời gian để trả lời.<br><br>Chúng tôi đã nhận được yêu cầu từ bạn</p><p>*************************************************</p>".
 $content.
 "<p>*************************************************</p>
 <p><a href='#' target='_blank'>rongdo.net</a></p>
@@ -79,7 +79,7 @@ function sendAdmin($from, $config_email, $txtEmail, $content_send_admin, $subjec
 		/* Send Mail */ 	
 		if(!$mail->Send())
 		{
-			echo '<h1>メール送信エラー: ' . $mail->ErrorInfo . '</h1>';
+			echo '<h1>lỗi gửi email: ' . $mail->ErrorInfo . '</h1>';
 		}
 		else
 		{
@@ -112,7 +112,7 @@ function sendUser($from, $txtEmail, $content_send_user, $subject_user, $txtName)
 		/* Send Mail */ 		
 		if(!$mailUser->Send())
 		{
-			echo '<h1>メール送信エラー: ' . $mailUser->ErrorInfo . '</h1>';
+			echo '<h1>lỗi gửi email: ' . $mailUser->ErrorInfo . '</h1>';
 		}
 
 	} catch (Exception $e) {

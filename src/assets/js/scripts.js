@@ -3544,36 +3544,53 @@ $(window).on("load", function () {
 });
 
 
-var a = 0;
-if (window.location.pathname === "/") { // Chỉ chạy trên trang index
-	$(window).scroll(function () {
-		var oTop = $('#counter').offset().top - window.innerHeight;
-		if (a == 0 && $(window).scrollTop() > (oTop - 150)) {
-			$('.counter-value').each(function () {
-				var $this = $(this),
-					countTo = $this.attr('data-target');
-				// Store the symbol in a variable
-				var symbol = $this.data('symbol');
-				// Update the text of the counter value with symbol
-				$this.text('0' + symbol); // Start from 0 with symbol
-				$({
-					countNum: 0 // Start from 0
-				}).animate({
-					countNum: countTo
-				},
-					{
-						duration: 8000,
-						easing: 'swing',
-						step: function () {
-							$this.text(Math.floor(this.countNum) + symbol); // Update the text with current count and symbol
-						},
-						complete: function () {
-							$this.text(Math.floor(this.countNum) + symbol); // Ensure final value is displayed with symbol
-						}
+var counters = document.querySelectorAll(".counter");
 
-					});
-			});
-			a = 1;
+window.addEventListener("load", function () {
+	var observerOptions = {
+		root: null, // Sử dụng khung nhìn làm gốc
+		rootMargin: "0px",
+		threshold: 0.1 // Bắt đầu đếm khi 10% phần tử hiển thị
+	};
+
+	function startCounter(counter) {
+		var start = parseInt(counter.getAttribute('data-count-start'));
+		var end = parseInt(counter.getAttribute('data-count-end'));
+		var speed = parseInt(counter.getAttribute('data-speed'));
+		var symbol = counter.getAttribute('data-symbol') || '';
+
+		if (isNaN(start) || isNaN(end) || isNaN(speed)) {
+			console.error('Invalid data attribute value for counter:', counter);
+			return;
 		}
+
+		var interval = setInterval(function () {
+			start++;
+			if (start > end) {
+				clearInterval(interval);
+				return;
+			}
+			counter.innerText = start + symbol;
+		}, speed);
+	}
+
+	function handleIntersect(entries, observer) {
+		entries.forEach(function (entry) {
+			if (entry.isIntersecting) {
+				startCounter(entry.target);
+				observer.unobserve(entry.target); // Ngừng quan sát khi bộ đếm đã bắt đầu
+			}
+		});
+	}
+
+	var observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+	counters.forEach(function (counter) {
+		observer.observe(counter);
 	});
-}
+}, false);
+
+$(".box-to-top__button").click(function () {
+	$("html, body").animate({ scrollTop: 0 }, "slow");
+	return false;
+});

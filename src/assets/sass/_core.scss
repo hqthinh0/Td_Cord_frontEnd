@@ -2004,6 +2004,9 @@ textarea {
 		align-items: center;
 		justify-content: center;
 	}
+	&__banner{
+		padding: 0;
+	}
 	& .color-primary{
 		color: var(--color-primary);
 	}
@@ -2119,8 +2122,8 @@ textarea {
 	font-size: 100%;
 }
 .txt-note {
-	color: #666;
-	font-size: 1.2rem;
+	color: #d60000;
+	font-size: 1.6rem;
 	text-indent: -1em;
 	padding-left: 1em;
 	margin-top: 0.5rem;
@@ -2684,25 +2687,25 @@ section + section{
 			  }
 			}
 		}
-		&__img{
-			& > img{
-				width: 100%;
-			}
-			height: 100%;
-			box-sizing: border-box;
-			overflow: hidden;
-			transform-origin: 50% 65%;
-			transform: scale(1);
-			transition: transform 0.7s, filter 0.7s ease-in-out;
+		// &__img{
+		// 	& > img{
+		// 		width: 100%;
+		// 	}
+		// 	height: 100%;
+		// 	box-sizing: border-box;
+		// 	overflow: hidden;
+		// 	transform-origin: 50% 65%;
+		// 	transform: scale(1);
+		// 	transition: transform 0.7s, filter 0.7s ease-in-out;
 
-			&:hover{
-				img{
-					filter: brightness(100%);
-					transform: scale(1.15);
-					transition: transform 0.7s, filter 0.7s ease-in-out;
-				}
-			}
-		}
+		// 	&:hover{
+		// 		img{
+		// 			filter: brightness(100%);
+		// 			transform: scale(1.15);
+		// 			transition: transform 0.7s, filter 0.7s ease-in-out;
+		// 		}
+		// 	}
+		// }
 	}
 }
 
@@ -2736,24 +2739,24 @@ section + section{
 			}
 		}
 
-		&__img {
-			height: 100%;
-			box-sizing: border-box;
-			overflow: hidden;
-			transform-origin: 50% 65%;
-			transform: scale(1);
-			transition: transform 0.7s, filter 0.7s ease-in;
+		// &__img {
+		// 	height: 100%;
+		// 	box-sizing: border-box;
+		// 	overflow: hidden;
+		// 	transform-origin: 50% 65%;
+		// 	transform: scale(1);
+		// 	transition: transform 0.7s, filter 0.7s ease-in;
 
-			&:hover {
-				img {
-					overflow: hidden;
-					transform-origin: 50% 65%;
-					filter: brightness(100%);
-					transform: scale(1.15);
-					transition: transform 0.7s, filter 0.7s ease-in-out;
-				}
-			}
-		}
+		// 	&:hover {
+		// 		img {
+		// 			overflow: hidden;
+		// 			transform-origin: 50% 65%;
+		// 			filter: brightness(100%);
+		// 			transform: scale(1.15);
+		// 			transition: transform 0.7s, filter 0.7s ease-in-out;
+		// 		}
+		// 	}
+		// }
 	}
 
 	&__box{
@@ -2765,6 +2768,11 @@ section + section{
 			}
 
 			& .btn-info{
+				@media screen and (max-width:769px) {
+					min-width: 100%;
+					position: relative;
+					margin-top: 2rem;
+				}
 				min-width: 22rem;
 				position: absolute;
 				right: 0;
@@ -2842,10 +2850,33 @@ section + section{
 }
 
 .construction{
+
 	& .box-category{
 		margin-top: 3rem;
 		@media screen and (max-width:769px) {
 			margin-top: 1.5rem;
+		}
+
+		&__img {
+			&>img {
+				width: 100%;
+			}
+		
+			height: 100%;
+			box-sizing: border-box;
+			overflow: hidden;
+			transform-origin: 50% 65%;
+			transform: scale(1);
+			transition: transform 0.7s,
+			filter 0.7s ease-in-out;
+		
+			&:hover {
+				img {
+					filter: brightness(100%);
+					transform: scale(1.15);
+					transition: transform 0.7s, filter 0.7s ease-in-out;
+				}
+			}
 		}
 	}
 
@@ -3124,3 +3155,118 @@ section + section{
 		}
 	}
 }
+
+.box-mainvisual{
+	position: relative;
+	margin-bottom: 3rem;
+
+	&__title{
+		position: absolute;
+		top: 50%;
+		left: 47%;
+	}
+}
+.box-effect{
+	&__bg{
+		padding: 22rem;
+	}
+}
+.box_contact {
+	display: flex;
+	color: #fff;
+
+	@media screen and (max-width:869px) {
+		display: block;
+	}
+
+	&_text {
+
+		flex-basis: 57.97%;
+		display: flex;
+		align-items: center;
+
+		&_inner {
+			@media screen and (max-width:869px) {
+				width: 100%;
+			}
+
+			& .hdg-lv3+p {
+				margin-top: 40px;
+			}
+
+			& p+.contact {
+				margin-top: 20px;
+			}
+		}
+	}
+
+	&_image {
+		line-height: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		height: 100%;
+		width: 42.03%;
+
+		@media screen and (max-width:869px) {
+			position: static;
+			height: 276px;
+			width: auto;
+			margin: 25px -5% 0;
+		}
+	}
+}
+
+.hide{
+	display: none;
+}
+
+.model{
+	
+}
+.box-category {
+	margin-top: 3rem;
+
+	@media screen and (max-width:769px) {
+		margin-top: 1.5rem;
+	}
+
+	&__img {
+		&>img {
+			width: 100%;
+		}
+
+		height: auto;
+		box-sizing: border-box;
+		overflow: hidden;
+		transform-origin: 50% 65%;
+		transform: scale(1);
+		transition: transform 0.7s,
+		filter 0.7s ease-in-out;
+
+		&:hover {
+			img {
+				filter: brightness(100%);
+				transform: scale(1.15);
+				transition: transform 0.7s, filter 0.7s ease-in-out;
+			}
+		}
+	}
+}
+
+.box-to-top{
+	&__button{
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+		position: fixed;
+		right: 1.4rem;
+		bottom: 4rem;
+		z-index: 8999;
+		width: 4.3rem;
+		height: 4.3rem;
+	}
+}
+
+
